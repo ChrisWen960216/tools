@@ -8,14 +8,32 @@ const NavOpsContent = (props) => {
 
   const [type, changeType] = useState('');
 
-  const renderOpsForm = (type) => {
-    console.log(type);
-    return (
-      <React.Fragment>
-        <h1>{selectTitle}</h1>
-        <Button type="default" onClick={() => changeType('')}>取消</Button>
-      </React.Fragment>
-    );
+  const onRemove = _selectedId => props.onRemove(_selectedId);
+
+  const renderOpsForm = (_type) => {
+    switch (_type) {
+      case 'add':
+      case 'edit':
+        return (
+          <React.Fragment>
+            <h1>{selectTitle}</h1>
+            <Button type="default" onClick={() => changeType('')}>取消</Button>
+          </React.Fragment>
+        );
+      default:
+        return (
+          <React.Fragment>
+            <div className="intro">
+              <span>请选择你想要进行的操作:</span>
+            </div>
+            <div className="btnGroup">
+              <Button type="default" htmlType="button" onClick={() => changeType('edit')}>编辑</Button>
+              <Button type="primary" htmlType="button" onClick={() => changeType('add')}>添加</Button>
+              <Button type="danger" htmlType="button" onClick={() => onRemove(selectedId)}>删除</Button>
+            </div>
+          </React.Fragment>
+        );
+    }
   };
 
   const renderOpsPanel = (_selectedId, _selectTitle) => {
@@ -27,24 +45,10 @@ const NavOpsContent = (props) => {
             <span>{_selectTitle}</span>
           </div>
           <div className="ops_panel">
-            {type
-              ? (
-                <div className="ops_form">
-                  {renderOpsForm()}
-                </div>
-              )
-              : (
-                <React.Fragment>
-                  <div className="intro">
-              请选择你想要进行的操作:
-                  </div>
-                  <div className="btnGroup">
-                    <Button type="default" htmlType="button" onClick={() => changeType('edit')}>编辑</Button>
-                    <Button type="primary" htmlType="button" onClick={() => changeType('add')}>添加</Button>
-                    <Button type="danger" htmlType="button" onClick={() => changeType('delete')}>删除</Button>
-                  </div>
-                </React.Fragment>
-              )}
+            <div className="ops_form">
+              {renderOpsForm(type)}
+            </div>
+
           </div>
         </div>
       );
@@ -59,4 +63,5 @@ export default NavOpsContent;
 
 NavOpsContent.propTypes = {
   selectedItem: PropTypes.object.isRequired,
+  onRemove: PropTypes.func.isRequired,
 };

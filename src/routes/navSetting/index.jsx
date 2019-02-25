@@ -167,12 +167,14 @@ const treeData = [
 
 
 const NavSetting = (props) => {
-  console.log(props);
-
   const [selectedItem, setSelectedItem] = useState({ selectedId: '', selectTitle: '' });
 
   const onKeysSelected = (_selectedId, _selectTitle) => {
     setSelectedItem({ selectedId: _selectedId, selectTitle: _selectTitle });
+  };
+
+  const onItemRemove = (_removeItemId) => {
+    console.log('RemoveItem', _removeItemId);
   };
 
   return (
@@ -181,7 +183,7 @@ const NavSetting = (props) => {
         <NavTree treeData={treeData} onKeysSelected={onKeysSelected} />
       </div>
       <div className="ops_content">
-        <NavOps selectedItem={selectedItem} />
+        <NavOps selectedItem={selectedItem} onRemove={onItemRemove} />
       </div>
     </MainLayout>
   );
