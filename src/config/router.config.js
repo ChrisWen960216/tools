@@ -1,7 +1,7 @@
 const routeItems = [
   {
-    path: '/',
-    page: () => import('../routes/IndexPage'),
+    path: '/navSetting',
+    page: () => import('../routes/navSetting'),
   },
 ];
 

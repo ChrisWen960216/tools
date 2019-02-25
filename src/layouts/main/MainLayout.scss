@@ -1,0 +1,30 @@
+@import '../../common.scss';
+
+.mainLayout{
+  .mainLayout_content{
+    .layout_header{
+      padding: 0;
+      margin-bottom:20px;
+    }
+    .layout_content{
+      min-height: 100vh - px2vh(84 + 48);
+      min-width: 900px;
+      background-color: #FFF;
+      border-radius: 5px;
+      overflow: auto;
+    }
+  }
+  .logo_content{
+    height: 64px;
+    line-height: 64px;
+    color:#FFF;
+    font-size: 20px;
+    margin-left: 24px;
+    font-family: $font_family;
+  }
+
+  .ant-layout-footer{
+    background-color: #FFF;
+    text-align: center;
+  }
+}
