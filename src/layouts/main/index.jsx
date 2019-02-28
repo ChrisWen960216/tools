@@ -14,6 +14,17 @@ const { SubMenu } = Menu;
 const MainLayout = (props) => {
   const [collapsed, onCollapse] = useState(false);
 
+  const renderMenuItem = (siderBar) => {
+    const { key, icon, text } = siderBar;
+    const menuItem = (
+      <Menu.Item key={key}>
+        {icon ? <Icon type={icon} /> : null}
+        <span>{text}</span>
+      </Menu.Item>
+    );
+    return menuItem;
+  };
+
   const renderSubMenu = (siderBar) => {
     const {
       key, icon, text, children,
@@ -28,22 +39,12 @@ const MainLayout = (props) => {
           </span>
 )}
       >
-        {children.map(menuItem => this.renderMenuItem(menuItem))}
+        {children.map(menuItem => renderMenuItem(menuItem))}
       </SubMenu>
     );
     return subMenu;
   };
 
-  const renderMenuItem = (siderBar) => {
-    const { key, icon, text } = siderBar;
-    const menuItem = (
-      <Menu.Item key={key}>
-        {icon ? <Icon type={icon} /> : null}
-        <span>{text}</span>
-      </Menu.Item>
-    );
-    return menuItem;
-  };
 
   const renderMainSider = () => {
     const siders = siderBars.map((siderBar) => {

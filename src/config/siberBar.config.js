@@ -4,21 +4,17 @@ const sideBars = [
     icon: 'setting',
     text: '导航设置',
   },
-  // {
-  //   key: 'customerManagement',
-  //   icon: 'team',
-  //   text: '客户管理',
-  //   // children:[
-  //   //   {
-  //   //     key:'dividedSetting',
-  //   //     text:'分成设置'
-  //   //   },
-  //   //   {
-  //   //     key:'returnRecord',
-  //   //     text:'返佣记录'
-  //   //   }
-  //   // ]
-  // },
+  {
+    key: 'customerManagement',
+    icon: 'team',
+    text: 'Demo',
+    children: [
+      {
+        key: 'rxjs_hooks',
+        text: 'rxjsHooks',
+      },
+    ],
+  },
   // {
   //   key: 'commissionRecord',
   //   icon: 'money-collect',

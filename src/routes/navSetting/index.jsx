@@ -166,7 +166,7 @@ const treeData = [
 ];
 
 
-const NavSetting = (props) => {
+const NavSetting = () => {
   const [selectedItem, setSelectedItem] = useState({ selectedId: '', selectTitle: '' });
 
   const onKeysSelected = (_selectedId, _selectTitle) => {

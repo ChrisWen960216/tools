@@ -10,7 +10,9 @@
     "dva": "^2.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "rxjs": "^6.4.0",
+    "rxjs-hooks": "^0.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

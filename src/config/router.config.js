@@ -1,7 +1,11 @@
 const routeItems = [
   {
-    path: '/navSetting',
+    path: '/nav_setting',
     page: () => import('../routes/navSetting'),
+  },
+  {
+    path: '/rxjs_hooks',
+    page: () => import('../routes/rxjsHooks'),
   },
 ];
 
