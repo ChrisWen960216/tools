@@ -2,10 +2,13 @@ const routeItems = [
   {
     path: '/nav_setting',
     page: () => import('../routes/navSetting'),
+    models: () => [
+      import('../models/navigation'),
+    ],
   },
   {
-    path: '/rxjs_hooks',
-    page: () => import('../routes/rxjsHooks'),
+    path: '*',
+    page: () => import('../routes/home'),
   },
 ];
 

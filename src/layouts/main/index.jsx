@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withRouter } from 'dva/router';
 import PropTypes from 'prop-types';
 import './MainLayout.scss';
 import {
@@ -10,6 +11,11 @@ const {
   Header, Content, Sider, Footer,
 } = Layout;
 const { SubMenu } = Menu;
+
+/**
+ * @param {string} selectedKey --- 默认选择
+ * @param {string} contentName --- 容器的className
+ */
 
 const MainLayout = (props) => {
   const [collapsed, onCollapse] = useState(false);
@@ -55,7 +61,9 @@ const MainLayout = (props) => {
   };
 
   const onSiderBarItemClick = (e) => {
-    console.log(e);
+    const { match: { path }, history } = props;
+    if (path.split('/')[1] === e.key) { return false; }
+    return history.push(e.key);
   };
 
   const renderLogoContent = (siberCollapsed) => {
@@ -97,6 +105,8 @@ MainLayout.propTypes = {
   children: PropTypes.any,
   selectedKey: PropTypes.string,
   contentName: PropTypes.string,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 MainLayout.defaultProps = {
@@ -105,4 +115,4 @@ MainLayout.defaultProps = {
   contentName: '',
 };
 
-export default MainLayout;
+export default withRouter(MainLayout);
