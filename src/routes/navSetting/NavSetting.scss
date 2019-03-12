@@ -1,0 +1,17 @@
+@import '../../common.scss';
+
+.nav_setting{
+  display: flex;
+  > *{
+    width: 50%;
+  }
+  > .nav_container{
+    border-right: 1px solid $border_color;
+    margin: 20px;
+  }
+
+  > .panel_container{
+    margin: 20px;
+    margin-left: 0;
+  }
+}

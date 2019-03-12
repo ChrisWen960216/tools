@@ -1,5 +1,6 @@
 $font_family:-apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
 $primary_color:#1890ff;
+$border_color:#D9D9D9;
 
 @function px2vh($px, $design_screen_width: 750) {
   @return $px / ($design_screen_width/100) * 1vh;

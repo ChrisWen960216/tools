@@ -1,21 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
 import { connect } from 'dva';
 import MainLayout from '../../layouts/main';
+import NavTree from '../../components/navTree';
+import NavPanel from '../../components/navPanel';
+import './NavSetting.scss';
 
 const NavSetting = (props) => {
   useEffect(() => {
     props.getNavigation();
   }, []);
 
-  console.log(props.navigation);
+  const [selectedKeys, setSelectedKeys] = useState([]);
+  const [selectedInfo, setSelectedInfo] = useState({});
+
+  const onRootSubmit = values => console.log(values);
+
+  const onNodeSelect = (_selectedKeys, _info) => {
+    setSelectedKeys(_selectedKeys);
+    setSelectedInfo(_info);
+  };
+
 
   return (
-    <MainLayout selectedKey="nav_setting">
-      <Button loading={props.loading} onClick={props.getNavigation}>
-        GetNavigation
-      </Button>
+    <MainLayout selectedKey="nav_setting" contentName="nav_setting">
+      <div className="nav_container">
+        <NavTree navigation={props.navigation} onNodeSelect={onNodeSelect} selectedKeys={selectedKeys} />
+      </div>
+      <div className="panel_container">
+        <NavPanel selectedInfo={selectedInfo} onRootSubmit={onRootSubmit} />
+      </div>
     </MainLayout>
   );
 };
